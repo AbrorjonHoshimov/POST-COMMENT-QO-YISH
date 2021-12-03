@@ -34,20 +34,6 @@ public class AuthService implements UserDetailsService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public ApiResponse register(RegisterDto registerDto) {
-        if (!registerDto.getPassword().equals(registerDto.getPrePassword())) {
-            return new ApiResponse("Qayta yozilgan parolda xatolik", false);
-        }
-        if (userRepository.existsByUsername(registerDto.getUsername())) {
-            return new ApiResponse("Bunday username royxatda bor", false);
-        }
-
-        User user = new User(registerDto.getFullname(), registerDto.getUsername(),
-                passwordEncoder.encode(registerDto.getPassword()), rolerepository.findByName(Constants.USER).orElseThrow(() -> new ResourceNotFoundExсeption("ROLE ", "name", Constants.USER)),
-                true);
-        userRepository.save(user);
-        return new ApiResponse("saved", true);
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

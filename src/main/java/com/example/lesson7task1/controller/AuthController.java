@@ -21,11 +21,7 @@ public class AuthController {
     @Autowired
     AuthService userService;
 
-    @PostMapping
-    public HttpEntity<?> register(@Valid @RequestBody RegisterDto registerDto) {
-        ApiResponse apiResponse = userService.register(registerDto);
-        return ResponseEntity.status(apiResponse.isSuccess() ? 201 : 409).body(apiResponse);
-    }
+
 
     @PostMapping("/login")
     public HttpEntity<?> login(@Valid @RequestBody LoginDto loginDto) {

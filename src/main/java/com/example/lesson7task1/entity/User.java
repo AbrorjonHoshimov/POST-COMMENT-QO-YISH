@@ -30,13 +30,21 @@ public class User extends AbstractEntity implements UserDetails {
     private Long updateBy;
 
     @Column(nullable = false)
-    private String fullName;
+    private String firstName;
+    @Column(nullable = false)
+    private String lastName;
 
     @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private String phone;
+
+    @OneToOne
+    private Attachment attachment;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Role role;
@@ -47,8 +55,10 @@ public class User extends AbstractEntity implements UserDetails {
     private boolean credentialsNonExpired = true;
 
 
-    public User(String fullName, String username, String password, Role role, boolean enabled) {
-        this.fullName = fullName;
+    public User(String firstName,String lastName,String phone, String username, String password, Role role, boolean enabled) {
+        this.firstName = firstName;
+        this.phone = phone;
+        this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.role = role;

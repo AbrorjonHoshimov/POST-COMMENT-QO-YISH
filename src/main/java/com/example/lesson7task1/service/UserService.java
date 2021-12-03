@@ -25,7 +25,9 @@ public class UserService {
 
     public ApiResponse addUser(UserDto userDto) {
         User user = new User();
-        user.setFullName(userDto.getFullName());
+        user.setFirstName(userDto.getFirstname());
+        user.setLastName(userDto.getLastname());
+        user.setPhone(userDto.getPhone());
         user.setUsername(userDto.getUsername());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         Optional<Role> optionalRole = roleRepository.findById(userDto.getRoleId());
@@ -43,7 +45,9 @@ public class UserService {
         Optional<User> byId = userRepository.findById(id);
         if (!byId.isPresent()) return new ApiResponse("Not found", false);
         User user = byId.get();
-        user.setFullName(userDto.getFullName());
+        user.setFirstName(userDto.getFirstname());
+        user.setLastName(userDto.getLastname());
+        user.setPhone(userDto.getPhone());
         user.setUsername(userDto.getUsername());
         user.setPassword(userDto.getPassword());
         Optional<Role> optionalRole = roleRepository.findById(userDto.getRoleId());

@@ -11,8 +11,12 @@ import javax.xml.ws.soap.Addressing;
 @NoArgsConstructor
 @Data
 public class UserDto {
-    @NotNull(message = "FullName ni kiriting")
-    private String fullName;
+    @NotNull(message = "Firstname ni kiriting")
+    private String firstname;
+    @NotNull(message = "Lastname ni kiriting")
+    private String lastname;
+    @NotNull(message = "phone ni kiriting")
+    private String phone;
     @NotNull(message = "username ni kiriting")
     private String username;
     @NotNull(message = "password ni kiriting")

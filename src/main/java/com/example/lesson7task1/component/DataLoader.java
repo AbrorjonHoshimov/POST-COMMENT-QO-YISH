@@ -38,26 +38,25 @@ public class DataLoader implements CommandLineRunner {
                     "Hamma narsa qoshish huquqiga ega",
                     Arrays.asList(values)
             ));
-            Role user = roleRepository.save(new Role(
-                    Constants.USER,
+            Role director = roleRepository.save(new Role(
+                    Constants.DIRECTOR,
+                    "Mijoz",
+                    Arrays.asList(ADD_COMMENT, DELETE_MYCOMMENT, EDIT_COMMENT)
+            ));
+            Role cordinator = roleRepository.save(new Role(
+                    Constants.COORDINATOR,
                     "Mijoz",
                     Arrays.asList(ADD_COMMENT, DELETE_MYCOMMENT, EDIT_COMMENT)
             ));
             userRepository.save(new User(
                     "Abror",
+                    "Hoshimov",
+                    "+998970003066",
                     "Abrorjon",
                     passwordEncoder.encode("Aba777"),
                     admin,
                     true
             ));
-            userRepository.save(new User(
-                    "Jaxon",
-                    "Jaxa",
-                    passwordEncoder.encode("Jaxa555"),
-                    user,
-                    true
-            ));
-
         }
     }
 }
